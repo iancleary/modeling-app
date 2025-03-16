@@ -16,6 +16,8 @@ This template should help get you started developing with Tauri, React and Types
   * `nvm use 22.14.0` or whatever version number
   * `node --version`
   * `npm --version`
+  * `npm` to see if there is a version to upgrade to
+  * `npm install -g npm@11.2.0` or whatever version
   * `npm install -g bun`
   * `bun --version`
 * [Rust, using Rustup](https://www.rust-lang.org/tools/install)
@@ -29,5 +31,14 @@ Install all that and restart your computer.
 
 ```bash
 bun install
+```
+
+Development
+```
 bun run tauri dev
+```
+
+Production Build
+```
+bun run tauri build
 ```
