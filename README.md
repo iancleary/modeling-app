@@ -19,6 +19,8 @@ This template should help get you started developing with Tauri, React and Types
   * `npm install -g bun`
   * `bun --version`
 * [Rust, using Rustup](https://www.rust-lang.org/tools/install)
+  * `rustup default stable-msvc`
+  * `rustup update`
 * [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
 
 Install all that and restart your computer.
