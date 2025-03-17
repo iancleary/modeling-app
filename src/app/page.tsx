@@ -1,13 +1,8 @@
-/**
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *
- */
+"use client";
 
 import React from "react";
+import { useEffect, useState } from "react";
+import { invoke } from "@tauri-apps/api/core";
 import stylex from "@stylexjs/stylex";
 
 import Header from "@/components/header";
@@ -18,7 +13,11 @@ import { colors } from "./tokens.stylex";
 
 import { docFilesFrontmatter, rfdFilesFrontmatter } from "./frontmatter";
 
-export default async function Home() {
+export default function Home() {
+  useEffect(() => {
+    invoke("show_main_window");
+  }, []);
+
   return (
     <>
       <Header />

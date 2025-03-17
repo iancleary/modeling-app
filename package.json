@@ -5,8 +5,8 @@
   "type": "commonjs",
   "scripts": {
     "clean": "rimraf .next",
-    "dev": "next dev",
-    "build": "tsc && next build",
+    "dev": "next dev -p 1420",
+    "build": "next build",
     "next:lint": "next lint",
     "preview": "next preview",
     "tauri": "tauri"

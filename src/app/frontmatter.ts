@@ -30,6 +30,7 @@ function getFrontmatterObjectRfd(object: RfdMetadata): RfdFrontmatter {
 
 let docFilesFrontmatter = docsMetadata.map((item) => getFrontmatterObjectDocs(item.metadata, item.folder));
 
+
 let rfdFilesFrontmatter = rfdMetadata.map((item) => getFrontmatterObjectRfd(item.metadata));
 
 export {
