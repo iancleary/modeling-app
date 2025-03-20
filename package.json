@@ -1,7 +1,7 @@
 {
   "name": "modeling-app",
   "private": true,
-  "version": "0.2.1",
+  "version": "0.3.0",
   "type": "commonjs",
   "scripts": {
     "clean": "rimraf .next",
