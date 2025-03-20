@@ -9,7 +9,7 @@ This template should help get you started developing with Tauri, React and Types
 
 ## Tools
 
-> The tools are in the recommended installation order.
+> The tools are in the recommended installation order (as rust requires the Microsoft C++ Build Tools, at least the minimum install).
 
 * Bun (via npm)
   * [NPM via nvm-windows](https://github.com/coreybutler/nvm-windows/releases)
