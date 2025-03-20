@@ -1,0 +1,196 @@
+import { metadata } from "./metadata"
+
+# {metadata.title}
+
+# How to create optionally callable python decorators
+
+A very handy pattern when needing to perform some action before and after a function is called is to use a decorator.
+
+A decorator is a function that takes a function as an argument and returns a function.
+
+The returned function is a wrapper around the original function, and can perform some action before and after the original function is called.
+
+```py
+# conftest.py
+# examples
+import pytest
+
+# No need to write '@pytest.fixture()`
+@pytest.fixture
+def func():
+    return "This is just an example'
+
+
+@pytest.fixture(scope="session")
+def session_func():
+    return "This is just another example with a different scope"
+```
+
+## Concrete example
+
+Let's write an `@logged{:py}` decorator for numeric functions.
+
+It accepts an optional decimals argument to round the result of the computation to a certain number of digits. If decimals is not given, we shouldn't round at all.
+
+So, possible invocations should be:
+
+    * `@logged(){:py}`
+    * `@logged(decimals=2){:py}`
+    * `@logged{:py}` — implementing this is the goal of this blog post; equivalent of `@logged(){:py}`.
+
+Cutting to the chase, here's the annotated solution:
+
+```py
+# changeme/main.py
+# This is the module that will be imported by the user
+# there should be a folder called changeme with an __init__.py file
+import functools
+import typing
+
+
+def logged(func: typing.Callable = None, decimals: int = None) -> typing.Callable:
+    # Everything outside of the decorated function is executed
+    # when the logged function decorator is parsed by the interpreter
+
+    if func is None:
+        # This code is reached when the decorator is called with or without parameters
+        # It then returns a partial function with the parameters set
+        print(f"Decorator is a called function with decimals={decimals}")
+        return functools.partial(logged, decimals=decimals)
+
+    else:
+        # This code will always be reached eventually
+        # right away if the code decorator isn't a function call
+        # @logged
+        #
+        # or after the decorator is called with parameters, due to the above
+        # return functools.partial(logged, decimals=decimals)
+        #
+        # In the latter case, the code below is reached inside the partial function's execution
+        print(f"Decorator wrapped `{func.__name__}` {func}.")
+
+    # Everything inside of the `decorated` function below
+    # is executed when the decorated function is called
+    @functools.wraps(func)
+    def decorated(*args: typing.Any, **kwargs: typing.Any) -> typing.Any:
+        print(f"{func.__name__} called with args={args}, kwargs={kwargs}")
+        result = func(*args, **kwargs)
+        logged_result = result if decimals is None else round(result, decimals)
+        print(f"Logged Result:\t{logged_result}")
+        return result
+
+    print(f"Returning decorated function {decorated.__name__}\n\n")
+    return decorated
+```
+
+If we run the following script:
+
+> Note: The `changeme` package is just a placeholder for your package name.
+
+```py
+# main.py
+from changeme.main import logged
+
+if __name__ == "__main__":
+
+    @logged
+    def add(x: float, y: float) -> float:
+        return x + y
+
+    @logged()
+    def add_wrapped_func(x: float, y: float) -> float:
+        return x + y
+
+    @logged(decimals=3)
+    def add_log_rounded_to_three_decimals(x: float, y: float) -> float:
+        return x + y
+
+    @logged(decimals=0)
+    def add_log_rounded_to_zero_decimals(x: float, y: float) -> float:
+        return x + y
+
+    ret1 = add(3.0, 4.1234)
+    print(f"Returned:\t{ret1}\n")
+
+    ret2 = add_wrapped_func(3.0, 4.1234)
+    print(f"Returned:\t{ret2}\n")
+
+    ret3 = add_log_rounded_to_three_decimals(3.0, 4.1234)
+    print(f"Returned:\t{ret3}\n")
+
+    ret4 = add_log_rounded_to_zero_decimals(3.0, 4.1234)
+    print(f"Returned:\t{ret4}\n")
+```
+
+We get the following output in the terminal:
+
+```bash
+python main.py
+Decorator wrapped `add` <function add at 0x100a24a40>.
+Returning decorated function add
+
+
+Decorator is a called function with decimals=None
+Decorator wrapped `add_wrapped_func` <function add_wrapped_func at 0x100b11440>.
+Returning decorated function add_wrapped_func
+
+
+Decorator is a called function with decimals=3
+Decorator wrapped `add_log_rounded_to_three_decimals` <function add_log_rounded_to_three_decimals at 0x100b0b2e0>.
+Returning decorated function add_log_rounded_to_three_decimals
+
+
+Decorator is a called function with decimals=0
+Decorator wrapped `add_log_rounded_to_zero_decimals` <function add_log_rounded_to_zero_decimals at 0x100bb3ba0>.
+Returning decorated function add_log_rounded_to_zero_decimals
+
+
+add called with args=(3.0, 4.1234), kwargs={}
+Logged Result:  7.1234
+Returned:       7.1234
+
+add_wrapped_func called with args=(3.0, 4.1234), kwargs={}
+Logged Result:  7.1234
+Returned:       7.1234
+
+add_log_rounded_to_three_decimals called with args=(3.0, 4.1234), kwargs={}
+Logged Result:  7.123
+Returned:       7.1234
+
+add_log_rounded_to_zero_decimals called with args=(3.0, 4.1234), kwargs={}
+Logged Result:  7.0
+Returned:       7.1234
+```
+
+Boom.
+
+## Generic implementation
+
+This 100% generic implementation is stripped of any comments and debug outputs. Just copy-paste it somewhere and adapt it to your needs.
+
+```python
+# generic.py
+import functools
+import typing
+
+#                  @decorator 
+#                  or 
+#                  @decorator()
+#                  with **options being the **kwargs (key word arguements)
+# use it like this ^^^^^^^
+def decorator(func: typing.Callable = None, **options: typing.Any) -> typing.Callable:
+    if func is None:
+        return functools.partial(decorate, **options)
+
+    @functools.wraps(func)
+    def decorated(*args: typing.Any, **kwargs: typing.Any) -> typing.Any:
+        return func(*args, **kwargs)
+
+    return decorated
+```
+
+That's it! Go add this extra juice to your decorator-based APIs. 🚀
+
+> Adapted from another article to help my understanding: [Florimond Manca in 2019][Reference]
+
+[Reference]: https://florimond.dev/en/posts/2019/09/python-optionally-parametrized-decorators

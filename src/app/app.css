@@ -1,0 +1,95 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@layer resets {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
+
+  #root,
+  #__next {
+    isolation: isolate;
+  }
+}
+
+/**
+ * The @stylex directive is used by the @stylexjs/postcss-plugin.
+ * It is automatically replaced with generated CSS during builds.
+ */
+@stylex;
+
+@layer {
+  /* CSS is from link below, modified for use with `pre > code` selector */
+  /* https://github.com/shikijs/shiki/issues/3#issuecomment-2182692412 */
+  /* Select only code inside pre (avoid adding line number `1` to inline code */
+  /* pre > code */
+  pre > code {
+    counter-reset: step;
+    counter-increment: step 0;
+  }
+
+  pre > code .line::before {
+    content: counter(step);
+    counter-increment: step;
+    width: 1rem;
+    margin-right: 1.5rem;
+    display: inline-block;
+    text-align: right;
+    color: hsl(212, 33%, 79%);
+    /* colors.neutral200 */
+    /* https://github.com/iancleary/design-system/blob/5377d6b76eac20bcf250df6ae5f00f47d758f0a3/styles/tokens.stylex.ts#L50 */
+  }
+}
