@@ -92,4 +92,10 @@
     /* colors.neutral200 */
     /* https://github.com/iancleary/design-system/blob/5377d6b76eac20bcf250df6ae5f00f47d758f0a3/styles/tokens.stylex.ts#L50 */
   }
+
+  button#decorum-tb-minimize,
+  button#decorum-tb-maximize,
+  button#decorum-tb-close {
+    color: hsl(210, 36%, 93%);
+  }
 }

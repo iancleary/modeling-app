@@ -26,7 +26,10 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html {...stylex.props(styles.html)} lang="en">
-        <body {...stylex.props(styles.body)}>{children}</body>
+        <body {...stylex.props(styles.body)}>
+          <div {...stylex.props(styles.decorum)} />
+          {children}
+        </body>
       </html>
     </ViewTransitions>
   );
@@ -47,6 +50,11 @@ const styles = stylex.create({
     //   default: "linear-gradient(to bottom, rgb(214, 219, 220), white)",
     //   [DARK]: "linear-gradient(to bottom, rgb(20, 22, 27), black)",
     // },
+  },
+  decorum: {
+    // https://github.com/clearlysid/tauri-plugin-decorum/blob/278e34378116ea80f7b6176ae85cf6aa26c631eb/src/js/titlebar.js#L10-L33
+    backgroundColor: colors.neutral900,
+    height: "32px", // matches https://docs.rs/crate/tauri-plugin-decorum/1.1.1 height
   },
   errorBoundary: {
     display: "flex",
