@@ -198,10 +198,196 @@ export const spacing = stylex.defineVars({
   xxxxl: `clamp(${MIN_SPACE.xxxxl }px, calc(${INTERCEPT_SPACE.xxxxl }px + ${ Math.round(10000 * SLOPE_SPACE.xxxxl ) / 100 }vw), ${MAX_SPACE.xxxxl }px)`,
 });
 
+
+
+export const display = stylex.create({
+  inlineFlex: {
+    display: "inline-flex",
+  },
+  flex: {
+    display: "flex",
+  },
+  block: {
+    display: "block",
+  },
+  inlineBlock: {
+    display: "inline-block",
+  },
+  grid: {
+    display: "grid",
+  },
+});
+
+
+// export const inlineFlex = stylex.create({
+//   columnGapSmall: {
+//     display: "inline-flex",
+//     columnGap: spacing.sm,
+//   },
+//   columnGapMedium: {
+//     display: "inline-flex",
+//     columnGap: spacing.medium,
+//   },
+//   columnGapLarge: {
+//     display: "inline-flex",
+//     columnGap: spacing.large,
+//   },
+//   columnGapXLarge: {
+//     display: "inline-flex",
+//     columnGap: spacing.xlarge,
+//   },
+//   columnGapXXLarge: {
+//     display: "inline-flex",
+//     columnGap: spacing.xxlarge,
+//   },
+//   columnGapXXXLarge: {
+//     display: "inline-flex",
+//     columnGap: spacing.xxxlarge,
+//   },
+// });
+
+// export const grid = stylex.create({
+//   rowGapSmall: {
+//     display: "grid",
+//     rowGap: spacing.sm,
+//   },
+//   rowGapMedium: {
+//     display: "grid",
+//     rowGap: spacing.md,
+//   },
+//   rowGapLarge: {
+//     display: "grid",
+//     rowGap: spacing.lg,
+//   },
+//   rowGapXLarge: {
+//     display: "grid",
+//     rowGap: spacing.xl,
+//   },
+//   rowGapXXLarge: {
+//     display: "grid",
+//     rowGap: spacing.xxl,
+//   },
+//   rowGapXXXLarge: {
+//     display: "grid",
+//     rowGap: spacing.xxxl,
+//   },
+// });
+
 /**
  * Color Tokens
  */
 const DARK_MODE = '@media (prefers-color-scheme: dark)';
+
+
+export const colors = stylex.defineVars({
+  success: "hsl(140, 85%, 25%)",
+  successAccent: "hsl(140, 85%, 35%)",
+
+  danger: "hsl(347, 88%, 42%)",
+  dangerAccent: "hsl(347, 88%, 52%)",
+
+  // Primary
+  // These are the splashes of color that should
+  // appear the most in your UI, and are the ones that determine the
+  // overall "look" of the site. Use these for things like primary actions,
+  // links, navigation items, icons, accent borders, or text you want to emphasize.
+  primary950: "hsl(170, 97%, 8%)",
+  primary900: "hsl(170, 97%, 15%)",
+  primary800: "hsl(168, 80%, 23%)",
+  primary700: "hsl(166, 72%, 28%)",
+  primary600: "hsl(164, 71%, 34%)",
+  primary500: "hsl(162, 63%, 41%)",
+  primary400: "hsl(160, 51%, 49%)",
+  primary300: "hsl(158, 58%, 62%)",
+  primary200: "hsl(156, 73%, 74%)",
+  primary100: "hsl(154, 75%, 87%)",
+  primary50: "hsl(152 68%, 96%)",
+
+  // Neutral
+  // These are the colors you will use the most and will make up the majority
+  // of your UI. Use them for most of your text, backgrounds, and borders,
+  // as well as for things like secondary buttons and links
+  neutral950:  "hsl(210, 61%, 6%)" ,
+  neutral900: "hsl(211, 39%, 13%)",
+  neutral800: "hsl(209, 34%, 20%)",
+  neutral700: "hsl(209, 28%, 29%)",
+  neutral600: "hsl(210, 22%, 39%)",
+  neutral500: "hsl(209, 23%, 50%)",
+  neutral400: "hsl(211, 27%, 60%)",
+  neutral300: "hsl(210, 31%, 70%)",
+  neutral200: "hsl(212, 33%, 79%)",
+  neutral100: "hsl(210, 36%, 86%)",
+  neutral50: "hsl(210, 36%, 93%)",
+
+  // Supporting
+  // These colors should be used fairly conservatively throughout your UI to
+  // avoid overpowering your primary colors. Use them when you need an
+  // element to stand out, or to reinforce things like error states or positive
+  // trends with the appropriate semantic color.
+  supportingBlue950: "hsl(205, 100%, 12%)",
+  supportingBlue900: "hsl(205, 100%, 21%)",
+  supportingBlue800: "hsl(205, 87%, 29%)",
+  supportingBlue700: "hsl(205, 82%, 33%)",
+  supportingBlue600: "hsl(205, 76%, 39%)",
+  supportingBlue500: "hsl(205, 67%, 45%)",
+  supportingBlue400: "hsl(205, 65%, 55%)",
+  supportingBlue300: "hsl(205, 74%, 65%)",
+  supportingBlue200: "hsl(205, 84%, 74%)",
+  supportingBlue100: "hsl(205, 97%, 85%)",
+  supportingBlue50: "hsl(205, 79%, 92%)",
+
+  // Supporting
+  // These colors should be used fairly conservatively throughout your UI to
+  // avoid overpowering your primary colors. Use them when you need an
+  // element to stand out, or to reinforce things like error states or positive
+  // trends with the appropriate semantic color.
+  supportingPurple950: "hsl(263, 85%, 11%)",
+  supportingPurple900: "hsl(263, 85%, 18%)",
+  supportingPurple800: "hsl(262, 72%, 25%)",
+  supportingPurple700: "hsl(262, 69%, 31%)",
+  supportingPurple600: "hsl(262, 60%, 38%)",
+  supportingPurple500: "hsl(262, 48%, 46%)",
+  supportingPurple400: "hsl(262, 43%, 51%)",
+  supportingPurple300: "hsl(261, 47%, 58%)",
+  supportingPurple200: "hsl(261, 54%, 68%)",
+  supportingPurple100: "hsl(261, 68%, 84%)",
+  supportingPurple50: "hsl(262, 61%, 93%)",
+
+  // Supporting
+  // These colors should be used fairly conservatively throughout your UI to
+  // avoid overpowering your primary colors. Use them when you need an
+  // element to stand out, or to reinforce things like error states or positive
+  // trends with the appropriate semantic color.
+  
+  supportingRed950: "hsl(360, 92%, 11%)",
+  supportingRed900: "hsl(360, 92%, 20%)",
+  supportingRed800:"hsl(360, 85%, 25%)",
+  supportingRed700: "hsl(360, 79%, 32%)",
+  supportingRed600: "hsl(360, 72%, 38%)",
+  supportingRed500: "hsl(360, 67%, 44%)",
+  supportingRed400: "hsl(360, 64%, 55%)",
+  supportingRed300: "hsl(360, 71%, 66%)",
+  supportingRed200: "hsl(360, 77%, 78%)",
+  supportingRed100: "hsl(360, 82%, 89%)",
+  supportingRed50: "hsl(360, 100%, 97%)",
+
+  // Supporting
+  // These colors should be used fairly conservatively throughout your UI to
+  // avoid overpowering your primary colors. Use them when you need an
+  // element to stand out, or to reinforce things like error states or positive
+  // trends with the appropriate semantic color.
+  supportingYellow950: "hsl(43, 86%, 10%)",
+  supportingYellow900: "hsl(43, 86%, 17%)",
+  supportingYellow800: "hsl(43, 77%, 27%)",
+  supportingYellow700: "hsl(43, 72%, 37%)",
+  supportingYellow600: "hsl(42, 63%, 48%)",
+  supportingYellow500: "hsl(42, 78%, 60%)",
+  supportingYellow400: "hsl(43, 89%, 70%)",
+  supportingYellow300: "hsl(43, 90%, 76%)",
+  supportingYellow200: "hsl(45, 86%, 81%)",
+  supportingYellow100: "hsl(45, 90%, 88%)",
+  supportingYellow50: "hsl(45, 100%, 96%)",
+});
 
 export const globalTokens = stylex.defineVars({
   maxWidth: `${MAX_WIDTH}px`,

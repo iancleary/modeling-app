@@ -6,49 +6,57 @@ import { Link } from "next-view-transitions";
 import * as stylex from "@stylexjs/stylex";
 
 // must be a relative path, aliases don't work with stylex (as of 2025-03-16)
-import { colors, line, size, spacing } from "./src/app/tokens.stylex";
+import { colors, text, spacing } from "./src/app/tokens.stylex";
 
 const styles = stylex.create({
   h1: {
     color: colors.neutral100,
-    paddingTop: size.large,
+    paddingTop: spacing.lg,
+    fontSize: text.h1,
   },
   h2: {
     color: colors.neutral100,
-    paddingTop: size.medium,
+    paddingTop: spacing.md,
+    fontSize: text.h2,
   },
   h3: {
     color: colors.neutral100,
-    paddingTop: size.small,
+    paddingTop: spacing.sm,
+    fontSize: text.h3,
   },
   h4: {
     color: colors.neutral100,
-    paddingTop: size.small,
+    paddingTop: spacing.sm,
+    fontSize: text.h4,
   },
   h5: {
     color: colors.neutral100,
+    fontSize: text.h5,
   },
   h6: {
     color: colors.neutral100,
+    fontSize: text.p,
   },
   p: {
     color: colors.neutral100,
-    lineHeight: "1.5rem",
-    paddingBlockStart: size.medium,
-    paddingBlockEnd: size.medium,
-    fontSize: "1.1rem",
+    lineHeight: text.p,
+    paddingBlockStart: spacing.sm,
+    paddingBlockEnd: spacing.sm,
+    fontSize: text.p,
   },
   a: {
     color: colors.supportingPurple300,
   },
   ul: {
     color: colors.neutral100,
+    fontSize: text.p,
   },
   li: {
     color: colors.neutral100,
+    fontSize: text.p,
   },
   blockquote: {
-    paddingInlineStart: size.medium,
+    paddingInlineStart: spacing.md,
     borderInlineStartColor: colors.neutral700,
     borderInlineStartStyle: "solid",
     borderInlineStartWidth: "0.2rem",
@@ -56,22 +64,22 @@ const styles = stylex.create({
   code: {
     backgroundColor: colors.neutral900,
     color: colors.neutral200,
-    // padding: size.xsmall,
+    // padding: spacing.xsmall,
   },
   preWrapper: {
-    paddingTop: size.medium,
-    paddingBottom: size.medium,
+    paddingTop: spacing.md,
+    paddingBottom: spacing.md,
   },
   pre: {
     backgroundColor: colors.neutral900,
     borderWidth: "0.1em",
     borderColor: colors.neutral600,
     borderStyle: "solid",
-    borderRadius: size.small,
+    borderRadius: spacing.sm,
     color: colors.neutral800,
-    paddingTop: size.small,
-    paddingLeft: size.small,
-    paddingBottom: size.small,
+    paddingTop: spacing.sm,
+    paddingLeft: spacing.sm,
+    paddingBottom: spacing.sm,
     // Allow horizontal scroll of child code block
     position: "relative",
     overflow: "auto",
@@ -85,8 +93,8 @@ const styles = stylex.create({
   },
   math: {
     color: colors.neutral100,
-    fontSize: "1.1rem",
-    paddingTop: size.small,
+    fontSize: text.h5,
+    paddingTop: spacing.sm,
   },
 });
 
