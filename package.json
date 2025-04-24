@@ -1,7 +1,7 @@
 {
   "name": "modeling-app",
   "private": true,
-  "version": "0.3.2",
+  "version": "0.3.3",
   "type": "commonjs",
   "scripts": {
     "clean": "rimraf .next",
@@ -15,7 +15,7 @@
     "@babel/runtime": "^7.26.7",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "^15.1.6",
+    "@next/mdx": "15.3.1",
     "@shikijs/rehype": "3.2.1",
     "@stylexjs/open-props": "0.11.1",
     "@stylexjs/stylex": "0.11.1",
@@ -23,7 +23,7 @@
     "@tauri-apps/plugin-opener": "^2",
     "autoprefixer": "^10.4.20",
     "esbuild": "0.25.1",
-    "next": "15.2.3",
+    "next": "15.3.1",
     "next-view-transitions": "^0.3.4",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -43,7 +43,7 @@
     "@types/react-dom": "19.0.4",
     "@typescript-eslint/parser": "^8.27.0",
     "eslint": "9.22.0",
-    "eslint-config-next": "15.1.6",
+    "eslint-config-next": "15.3.1",
     "rimraf": "6.0.1",
     "typescript": "^5.3.3"
   }
