@@ -1,7 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 import * as stylex from "@stylexjs/stylex";
-import { colors, inlineFlex, size, spacing } from "../app/tokens.stylex";
+import { colors, inlineFlex, text, spacing } from "../app/tokens.stylex";
 
 const styles = stylex.create({
   nav: {
@@ -20,14 +20,14 @@ const styles = stylex.create({
     fontFamily: "system-ui, sans-serif",
     lineHeight: "1.8",
     display: "inline-flex",
-    paddingLeft: spacing.medium,
-    paddingRight: spacing.medium,
+    paddingLeft: spacing.md,
+    paddingRight: spacing.md,
     overflow: "hidden",
     paddingTop: 16,
   },
   text: {
     color: colors.neutral100,
-    fontSize: size.large,
+    fontSize: text.p,
   },
   icon: {
     color: colors.neutral100,
@@ -69,7 +69,7 @@ function Header() {
           </svg>
         </Link>
         <div {...stylex.props(styles.end)}>
-          <div {...stylex.props(inlineFlex.columnGapMedium)}>
+          <div {...stylex.props(inlineFlex.md)}>
             <Link
               href="/rfd/0001"
               {...stylex.props(styles.text, styles.noDecoration)}

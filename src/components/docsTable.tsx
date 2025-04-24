@@ -1,24 +1,25 @@
 import * as React from "react";
 import * as stylex from "@stylexjs/stylex";
-import { colors, size } from "../app/tokens.stylex";
+import { colors, spacing, text } from "../app/tokens.stylex";
 import Link from "next/link";
 import type { DocsFrontmatter } from "@/types";
+
 
 const styles = stylex.create({
   text: {
     color: colors.neutral100,
   },
   resultsWrapper: {
-    fontSize: size.small,
+    fontSize: text.sm,
   },
   results: {
     textTransform: "uppercase",
-    fontSize: size.medium,
+    fontSize: text.sm,
     color: colors.neutral500,
   },
   resultsNumber: {
     textTransform: "uppercase",
-    fontSize: size.medium,
+    fontSize: text.sm,
     color: colors.neutral200,
   },
   main: {
@@ -29,7 +30,7 @@ const styles = stylex.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    paddingTop: size.medium,
+    paddingTop: spacing.md,
   },
   desktop: {
     display: {
@@ -42,70 +43,71 @@ const styles = stylex.create({
       default: "grid",
       "@media (min-width: 800px)": "none",
     },
-    rowGap: size.medium,
+    rowGap: spacing.md,
   },
   link: {
     color: colors.neutral200,
     textDecoration: "none",
   },
   paddingBottom: {
-    paddingBottom: size.medium,
+    paddingBottom: spacing.xs,
   },
   gridWrapper: {
     display: "grid",
     gridTemplateColumns: "8fr 3fr 3fr 5fr",
-    columnGap: size.small,
-    // columnGap: size.medium,
+    columnGap: spacing.sm,
+    // columnGap: spacing.md,
     // columns: 12,
     // width: "100%",
     // height: "3rem",
     backgroundColor: colors.neutral800,
-    borderRadius: size.medium,
+    borderRadius: spacing.xs,
     // marginBottom: "1rem",
   },
   gridColumnNamesRow: {
-    paddingInlineStart: size.medium,
+    paddingInlineStart: spacing.sm,
     textTransform: "uppercase",
-    // paddingInlineEnd: size.medium,
+    // paddingInlineEnd: spacing.md,
   },
   gridColumnNames: {
     color: colors.neutral100,
-    paddingTop: size.medium,
-    paddingBottom: size.medium,
+    paddingTop: spacing.xs,
+    paddingBottom: spacing.xs,
 
-    fontSize: size.medium,
+    fontSize: text.sm,
   },
   gridContentRowWrapper: {
-    paddingTop: size.medium,
+    paddingTop: spacing.sm,
   },
   gridContentRow: {
-    paddingInlineStart: size.medium,
+    paddingInlineStart: spacing.sm,
     backgroundColor: colors.neutral900,
   },
   gridContent: {
     color: colors.neutral100,
-    paddingTop: size.medium,
-    paddingBottom: size.medium,
-    fontSize: size.medium,
-    columnGap: size.small,
+    paddingTop: spacing.xs,
+    paddingBottom: spacing.xs,
+    fontSize: text.p,
+    columnGap: spacing.sm,
   },
   topHelpers: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
     width: "100%",
-    paddingInlineStart: size.medium,
-    paddingInlineEnd: size.medium,
+    paddingInlineStart: spacing.md,
+    paddingInlineEnd: spacing.md,
   },
   number: {
-    fontSize: "1rem",
+    fontSize: text.sm,
     display: "inline-flex",
     backgroundColor: {
       default: "inherit",
       ":hover": colors.neutral700,
     },
-    padding: size.xsmall,
-    borderRadius: size.small,
+    padding: spacing.xxs,
+    // margin: spacing.xxxs,
+    borderRadius: spacing.xxs,
     width: "auto",
   },
   state: {
@@ -129,25 +131,25 @@ const styles = stylex.create({
   mobileCardWrapper: {
   },
   mobileCard: {
-    paddingInlineStart: size.medium,
+    paddingInlineStart: spacing.md,
     backgroundColor: colors.neutral950,
     borderStyle: "solid",
     borderColor: colors.neutral800,
-    borderRadius: size.small,
-    fontSize: size.large,
+    borderRadius: spacing.sm,
+    fontSize: text.h5,
   },
   mobileCardContent: {
     color: colors.neutral100,
-    paddingTop: size.medium,
-    paddingBottom: size.medium,
-    fontSize: size.medium,
-    columnGap: size.small,
+    paddingTop: spacing.md,
+    paddingBottom: spacing.md,
+    fontSize: spacing.md,
+    columnGap: spacing.sm,
   },
   mobileStateWrapper: {
     display: "flex",
     justifyContent: "start",
-    paddingBlockStart: size.small,
-    // paddingBlockEnd: size.small,
+    paddingBlockStart: spacing.sm,
+    // paddingBlockEnd: spacing.sm,
   },
   mobileState: {
     textTransform: "uppercase",
@@ -156,16 +158,16 @@ const styles = stylex.create({
     borderWidth: "0.1em",
     borderColor: colors.neutral600,
     borderStyle: "solid",
-    borderRadius: size.small,
-    padding: size.xsmall,
+    borderRadius: spacing.sm,
+    padding: spacing.xs,
     display: "flex",
     alignItems: "center",
-    fontSize: size.medium,
+    fontSize: text.p,
   },
   mobileNumberTitleWrapper: {
-    paddingBlockStart: size.small,
-    paddingBlockEnd: size.small,
-    fontSize: size.large,
+    paddingBlockStart: spacing.sm,
+    paddingBlockEnd: spacing.sm,
+    fontSize: text.h5,
   },
   mobileNumber: {
     textTransform: "capitalize",
@@ -185,10 +187,11 @@ const styles = stylex.create({
     color: colors.neutral300,
     display: "flex",
     alignItems: "center",
-    paddingBlockEnd: size.small,
-    fontSize: size.large,
+    paddingBlockEnd: spacing.sm,
+    fontSize: text.h5,
   },
 });
+
 
 function getDateFormat(dateString: string) {
   const date = new Date(dateString);

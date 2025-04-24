@@ -9,7 +9,7 @@
 
 import "./app.css";
 import { globalTokens as $ } from "@/app/globalTokens.stylex";
-import { colors, size } from "./tokens.stylex";
+import { colors, spacing } from "./tokens.stylex";
 import * as stylex from "@stylexjs/stylex";
 import { ViewTransitions } from "next-view-transitions";
 
@@ -61,6 +61,6 @@ const styles = stylex.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    paddingTop: size.medium,
+    paddingTop: spacing.md,
   },
 });
