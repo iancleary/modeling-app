@@ -1,195 +1,7 @@
 import * as React from "react";
-import * as stylex from "@stylexjs/stylex";
-import { colors, text, spacing } from "../app/tokens.stylex";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import type { RfdFrontmatter } from "@/types";
-
-const styles = stylex.create({
-  text: {
-    color: colors.neutral100,
-  },
-  resultsWrapper: {
-    fontSize: text.sm,
-  },
-  results: {
-    textTransform: "uppercase",
-    fontSize: text.sm,
-    color: colors.neutral500,
-  },
-  resultsNumber: {
-    textTransform: "uppercase",
-    fontSize: text.sm,
-    color: colors.neutral200,
-  },
-  main: {
-    // width: "100%",
-  },
-  title: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
-    paddingTop: spacing.md,
-  },
-  desktop: {
-    display: {
-      default: "none",
-      "@media (min-width: 800px)": "block",
-    },
-  },
-  mobile: {
-    display: {
-      default: "grid",
-      "@media (min-width: 800px)": "none",
-    },
-    rowGap: spacing.md,
-  },
-  link: {
-    color: colors.neutral200,
-    textDecoration: "none",
-  },
-  paddingBottom: {
-    paddingBottom: spacing.xs,
-  },
-  gridWrapper: {
-    display: "grid",
-    gridTemplateColumns: "8fr 3fr 3fr 5fr",
-    columnGap: spacing.sm,
-    // columnGap: spacing.md,
-    // columns: 12,
-    // width: "100%",
-    // height: "3rem",
-    backgroundColor: colors.neutral800,
-    borderRadius: spacing.xs,
-    // marginBottom: "1rem",
-  },
-  gridColumnNamesRow: {
-    paddingInlineStart: spacing.sm,
-    textTransform: "uppercase",
-    // paddingInlineEnd: spacing.md,
-  },
-  gridColumnNames: {
-    color: colors.neutral100,
-    paddingTop: spacing.xs,
-    paddingBottom: spacing.xs,
-
-    fontSize: text.sm,
-  },
-  gridContentRowWrapper: {
-    paddingTop: spacing.sm,
-  },
-  gridContentRow: {
-    paddingInlineStart: spacing.sm,
-    backgroundColor: colors.neutral900,
-  },
-  gridContent: {
-    color: colors.neutral100,
-    paddingTop: spacing.xs,
-    paddingBottom: spacing.xs,
-    fontSize: text.p,
-    columnGap: spacing.sm,
-  },
-  topHelpers: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%",
-    paddingInlineStart: spacing.md,
-    paddingInlineEnd: spacing.md,
-  },
-  number: {
-    fontSize: text.sm,
-    display: "inline-flex",
-    backgroundColor: {
-      default: "inherit",
-      ":hover": colors.neutral700,
-    },
-    padding: spacing.xxs,
-    // margin: spacing.xxxs,
-    borderRadius: spacing.xxs,
-    width: "auto",
-  },
-  state: {
-    textTransform: "capitalize",
-    color: colors.neutral100,
-    display: "flex",
-    alignItems: "center",
-  },
-  date: {
-    textTransform: "capitalize",
-    color: colors.neutral100,
-    display: "flex",
-    alignItems: "center",
-  },
-  labels: {
-    textTransform: "capitalize",
-    color: colors.neutral100,
-    display: "flex",
-    alignItems: "center",
-  },
-  mobileCardWrapper: {
-  },
-  mobileCard: {
-    paddingInlineStart: spacing.md,
-    backgroundColor: colors.neutral950,
-    borderStyle: "solid",
-    borderColor: colors.neutral800,
-    borderRadius: spacing.sm,
-    fontSize: text.h5,
-  },
-  mobileCardContent: {
-    color: colors.neutral100,
-    paddingTop: spacing.md,
-    paddingBottom: spacing.md,
-    fontSize: spacing.md,
-    columnGap: spacing.sm,
-  },
-  mobileStateWrapper: {
-    display: "flex",
-    justifyContent: "start",
-    paddingBlockStart: spacing.sm,
-    // paddingBlockEnd: spacing.sm,
-  },
-  mobileState: {
-    textTransform: "uppercase",
-    backgroundColor: colors.neutral900,
-    color: colors.neutral200,
-    borderWidth: "0.1em",
-    borderColor: colors.neutral600,
-    borderStyle: "solid",
-    borderRadius: spacing.sm,
-    padding: spacing.xs,
-    display: "flex",
-    alignItems: "center",
-    fontSize: text.p,
-  },
-  mobileNumberTitleWrapper: {
-    paddingBlockStart: spacing.sm,
-    paddingBlockEnd: spacing.sm,
-    fontSize: text.h5,
-  },
-  mobileNumber: {
-    textTransform: "capitalize",
-    color: colors.neutral100,
-    fontWeight: "bold",
-    display: "flex",
-    alignItems: "center",
-  },
-  mobileTitle: {
-    textTransform: "capitalize",
-    color: colors.neutral100,
-    display: "flex",
-    alignItems: "center",
-  },
-  mobileDate: {
-    textTransform: "capitalize",
-    color: colors.neutral300,
-    display: "flex",
-    alignItems: "center",
-    paddingBlockEnd: spacing.sm,
-    fontSize: text.h5,
-  },
-});
+import { H2 } from "./mdx-components";
 
 function getDateFormat(dateString: string) {
   const date = new Date(dateString);
@@ -202,31 +14,35 @@ function getDateFormat(dateString: string) {
 
 function ResultCount({ count }: { count: string }): React.ReactElement {
   return (
-    <div {...stylex.props(styles.text, styles.resultsWrapper)}>
-      <span {...stylex.props(styles.results)}>Results: </span>
-      <span {...stylex.props(styles.resultsNumber)}>{count}</span>
+    <div className="text-foreground text-sm">
+      <span className="uppercase text-base text-red">Results: </span>
+      <span className="uppercase text-base text-foreground">{count}</span>
     </div>
   );
 }
 
 function GridHeaders(): React.ReactElement {
   return (
-    <div {...stylex.props(styles.gridWrapper, styles.gridColumnNamesRow)}>
-      <div {...stylex.props(styles.gridColumnNames)}>Number / Title</div>
-      <div {...stylex.props(styles.gridColumnNames)}>State</div>
-      <div {...stylex.props(styles.gridColumnNames)}>Updated</div>
-      <div {...stylex.props(styles.gridColumnNames)}>Labels</div>
+    <div className="grid grid-cols-[8fr_3fr_3fr_5fr] gap-x-2 bg-secondary rounded-md pl-4 uppercase">
+      <div className="text-foreground pt-4 pb-4 text-base">Number / Title</div>
+      <div className="text-foreground pt-4 pb-4 text-base">State</div>
+      <div className="text-foreground pt-4 pb-4 text-base">Updated</div>
+      <div className="text-foreground pt-4 pb-4 text-base">Labels</div>
     </div>
   );
 }
 
 function GridContentRow({ file }: { file: RfdFrontmatter }) {
   return (
-    <div {...stylex.props(styles.gridContentRowWrapper)}>
-      <div {...stylex.props(styles.gridWrapper, styles.gridContentRow)}>
-        <div {...stylex.props(styles.gridContent)}>
-          <Link {...stylex.props(styles.link)} href={file.slug} key={file.slug}>
-            <div {...stylex.props(styles.number)}>
+    <div className="pt-4">
+      <div className="grid grid-cols-[8fr_3fr_3fr_5fr] gap-x-2 bg-secondary pl-4 group">
+        <div className="text-foreground pt-4 pb-4 text-base gap-x-2 ">
+          <Link
+            className="text-foreground no-underline"
+            href={file.slug}
+            key={file.slug}
+          >
+            <div className="text-foreground inline-flex bg-inherit group-hover:bg-primary group-hover:text-secondary px-2 rounded w-auto">
               <div>
                 <div>
                   RFD <span>{file.shortNumber}</span>
@@ -236,11 +52,15 @@ function GridContentRow({ file }: { file: RfdFrontmatter }) {
             </div>
           </Link>
         </div>
-        <div {...stylex.props(styles.state)}>{file.state}</div>
-        <div {...stylex.props(styles.date)}>
+        <div className="capitalize text-foreground flex items-center">
+          {file.state}
+        </div>
+        <div className="capitalize text-foreground flex items-center">
           {getDateFormat(file.updatedDate)}
         </div>
-        <div {...stylex.props(styles.labels)}>{file.labels}</div>
+        <div className="capitalize text-foreground flex items-center">
+          {file.labels}
+        </div>
       </div>
     </div>
   );
@@ -248,12 +68,14 @@ function GridContentRow({ file }: { file: RfdFrontmatter }) {
 
 function CardTitle({ file }: { file: RfdFrontmatter }) {
   return (
-    <div {...stylex.props(styles.text, styles.mobileNumberTitleWrapper)}>
+    <div className="text-foreground pt-2 pb-2 text-lg">
       <div>
-        <div {...stylex.props(styles.mobileNumber)}>
+        <div className="capitalize text-foreground font-bold flex items-center">
           RFD <span>{file.shortNumber}</span>
         </div>
-        <div {...stylex.props(styles.mobileTitle)}>{file.title}</div>
+        <div className="capitalize text-foreground flex items-center">
+          {file.title}
+        </div>
       </div>
     </div>
   );
@@ -261,18 +83,24 @@ function CardTitle({ file }: { file: RfdFrontmatter }) {
 
 function CardContentRow({ file }: { file: RfdFrontmatter }) {
   return (
-    <div {...stylex.props(styles.mobileCardWrapper)}>
-      <div {...stylex.props(styles.mobileCard)}>
-        <div {...stylex.props(styles.mobileStateWrapper)}>
-          <div {...stylex.props(styles.mobileState)}>{file.state}</div>
+    <div>
+      <div className="pl-4 bg-background border border-solid border-neutral-800 rounded text-lg">
+        <div className="flex justify-start pt-2">
+          <div className="uppercase bg-background text-muted-foreground border border-neutral-600 border-solid rounded px-2 flex items-center text-base">
+            {file.state}
+          </div>
         </div>
-        <Link {...stylex.props(styles.link)} href={file.slug} key={file.slug}>
+        <Link
+          className="text-muted-foreground no-underline"
+          href={file.slug}
+          key={file.slug}
+        >
           <CardTitle file={file} />
         </Link>
-        <div {...stylex.props(styles.mobileDate)}>
+        <div className="capitalize text-muted-foreground flex items-center pb-2 text-lg">
           {getDateFormat(file.updatedDate)}
         </div>
-        {/* <div {...stylex.props(styles.labels)}>{file.labels}</div> */}
+        {/* <div className="capitalize text-foreground flex items-center">{file.labels}</div> */}
       </div>
     </div>
   );
@@ -281,16 +109,16 @@ function CardContentRow({ file }: { file: RfdFrontmatter }) {
 function rfdTable({ rfds }: { rfds: RfdFrontmatter[] }): React.ReactElement {
   const count = rfds.length.toString();
   return (
-    <div {...stylex.props(styles.main)}>
-      <h1 {...stylex.props(styles.title, styles.text)}>
-        Requests for Discussion
-      </h1>
-      <div {...stylex.props(styles.topHelpers, styles.paddingBottom)}>
-        {/* <div {...stylex.props(styles.text)}>Filter</div> */}
+    <div>
+      <div className="flex items-center justify-center w-full">
+        <H2>Requests for Discussion</H2>
+      </div>
+      <div className="flex items-center justify-between w-full pl-4 pr-4 pb-4">
+        {/* <div className="text-foreground">Filter</div> */}
         <div />
         <ResultCount count={count} />
       </div>
-      <div {...stylex.props(styles.desktop)}>
+      <div className="hidden md:block">
         <GridHeaders />
         {rfds.map((file) => (
           <div key={file.slug}>
@@ -298,7 +126,7 @@ function rfdTable({ rfds }: { rfds: RfdFrontmatter[] }): React.ReactElement {
           </div>
         ))}
       </div>
-      <div {...stylex.props(styles.mobile)}>
+      <div className="grid md:hidden gap-y-4">
         {rfds.map((file) => (
           <div key={file.slug}>
             <CardContentRow file={file} />
