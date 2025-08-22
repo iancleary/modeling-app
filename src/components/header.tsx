@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 function Header() {
   return (
-    <nav className="flex items-center justify-center w-full">
+    <nav className="flex items-center justify-center w-full pt-4">
       <header
         className="w-[90%] justify-between font-sans leading-7 inline-flex overflow-hidden py-4
         max-w-screen-xl

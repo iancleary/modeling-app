@@ -1,12 +1,20 @@
+"use client";
+
 import React from "react";
+import { useEffect } from "react";
 
 import Header from "@/components/header";
 import DocsTable from "@/components/docsTable";
 import RfdTable from "@/components/rfdTable";
+import { invoke } from "@tauri-apps/api/core";
 
 import { docFilesFrontmatter, rfdFilesFrontmatter } from "./frontmatter";
-// import { SessionProvider } from "next-auth/react";
-export default async function Home() {
+
+export default function Home() {
+  useEffect(() => {
+    invoke("show_main_window");
+  }, []);
+
   return (
     <>
       <Header />
