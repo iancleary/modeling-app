@@ -41,7 +41,7 @@
     "eslint-config-next": "15.5.0",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
-    "@tauri-apps/cli": "^2",
+    "@tauri-apps/cli": "2.8.1",
     "@types/json-schema": "^7.0.15",
     "@types/mdx": "^2.0.13",
     "@types/node": "^22.7.6",

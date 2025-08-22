@@ -12,7 +12,7 @@ function getFrontmatterObjectDocs(
   folder: string
 ): DocsFrontmatter {
   // console.log(object);
-  var returnObject = {
+  const returnObject = {
     ...object,
     slug: `/docs/${folder}`,
   };
@@ -21,19 +21,19 @@ function getFrontmatterObjectDocs(
 }
 
 function getFrontmatterObjectRfd(object: RfdMetadata): RfdFrontmatter {
-  var returnObject = {
+  const returnObject = {
     ...object,
     slug: `/rfd/${object.number}`,
   };
   return returnObject;
 }
 
-let docFilesFrontmatter = docsMetadata.map((item) => getFrontmatterObjectDocs(item.metadata, item.folder));
+const docFilesFrontmatter = docsMetadata.map((item) =>
+  getFrontmatterObjectDocs(item.metadata, item.folder)
+);
 
+const rfdFilesFrontmatter = rfdMetadata.map((item) =>
+  getFrontmatterObjectRfd(item.metadata)
+);
 
-let rfdFilesFrontmatter = rfdMetadata.map((item) => getFrontmatterObjectRfd(item.metadata));
-
-export {
-  docFilesFrontmatter,
-  rfdFilesFrontmatter
-}
+export { docFilesFrontmatter, rfdFilesFrontmatter };
